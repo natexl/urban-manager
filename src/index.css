@@ -1,0 +1,12 @@
+body, div {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: center; 
+}
+
+li {
+  list-style: none;
+} 
