@@ -1,5 +1,5 @@
 import {IAuthTokenStorage} from "../interfaces";
-import defaultConfig, {TokenStorageConfig} from "src/config/localStorage";
+import defaultConfig, {TokenStorageConfig} from "@/config/localStorage";
 
 class TokenStorage implements IAuthTokenStorage {
     private refreshTokenName: string;

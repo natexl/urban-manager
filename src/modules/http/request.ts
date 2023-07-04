@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from "axios";
-import config from "../../config/http";
+import config from "@/config/http";
 import {IAuthTokenStorage} from "../interfaces"
 import { JaResponse } from "../interfaces/http";
 
