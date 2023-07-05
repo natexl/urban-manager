@@ -2,10 +2,10 @@
 import http from "@/modules/http";
 
 export async function apiLogin(username: string, password: string) {
-    // let res = await http.post("login", {
-    //     username,
-    //     password
-    // })
+    let res = await http.post("auth/login", {
+        username,
+        password
+    })
     // return res
     return {status: 200, meta: {msg: "登录成功"}, success: true}
 }

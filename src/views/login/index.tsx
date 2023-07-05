@@ -15,9 +15,9 @@ const Login: React.FC = () => {
 
         // 处理登录/注册逻辑
         if (!isSignUp) {
-            const {usename, password} = values
+            const {username, password} = values
             
-            const loginRes = await apiLogin(usename, password);
+            const loginRes = await apiLogin(username, password);
             if(loginRes.success) {
                 navigate("/home")
                 message.success("login success !")

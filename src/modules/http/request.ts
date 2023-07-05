@@ -36,7 +36,7 @@ export class Http {
       (response: AxiosResponse) => {
         const reqUrl = response.config.url
         switch (reqUrl) {
-            case "login":
+            case "auth/login":
                 const {token, refreshToken} = response.data
                 this.tokenStorage.setAuthToken(token);
                 this.tokenStorage.setRefreshToken(refreshToken);

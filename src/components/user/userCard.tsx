@@ -3,14 +3,14 @@ import { useState } from "react";
 import "./userCard.less"
 
 const UserCard = () => {
-    const [showDetail, setShowDetail] = useState(true);
+    const [showDetail, setShowDetail] = useState(false);
     const toggleDetail = (v: boolean) => {
         setShowDetail(v);
     }
 
     return (
         <>
-            <div onClick={() => { toggleDetail(true) }} onMouseLeave={() => { toggleDetail(false) }}>
+            <div onClick={() => { toggleDetail(true) }} onMouseLeave={() => { toggleDetail(false) }} className="usercard">
                 {!showDetail ? <>
                     <div className="avatar-hide">
                         <img src="src/assets/user.png" alt="#" />

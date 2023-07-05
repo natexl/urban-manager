@@ -1,15 +1,28 @@
 .manager {
     .manager-header {
-        display: flex;
         justify-content: space-between;
+        margin-top: 3px;
+        position: relative;
+
+        .title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .usercard-wrap {
+            position: absolute;
+            top: 0;
+            right: 15px;
+        }
     }
-    
+
     .manager-content {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
     }
-    
+
     .router-outlet {
         flex: 1 1 auto;
     }

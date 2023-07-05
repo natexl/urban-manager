@@ -1,10 +1,13 @@
 import { useRoutes } from 'react-router-dom'
 import routeConfig from "./router/index"
+import { KeepAliveProvider } from './components/public/KeepAliveProvider'
 
 function App() {
   return (
     <>
-      {useRoutes(routeConfig)}
+      <KeepAliveProvider>
+        {useRoutes(routeConfig)}
+      </KeepAliveProvider>
     </>
   )
 }

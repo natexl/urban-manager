@@ -1,0 +1,67 @@
+/* 电脑端样式 */
+@media screen and (min-width: 768px) {
+    .titlw-wrap {
+        font-size: 18px;
+        width: 30%;
+        height: 5%;
+    }
+}
+
+/* 手机端样式 */
+@media screen and (max-width: 767px) {
+    .titlw-wrap {
+        font-size: 18px;
+        width: 50%;
+        height: 10%;
+    }
+}
+
+.titlw-wrap {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    // height: 10%;
+    line-height: 15px;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 999;
+    // background-image: linear-gradient(to bottom,
+    //         /* 渐变方向从上到下 */
+    //         rgba(30, 60, 114, .8),
+    //         /* 起始颜色：深蓝色 */
+    //         rgba(50, 146, 255, .6)
+    //         /* 结束颜色：亮蓝色 */
+    //     );
+    // clip-path: polygon(0% 0%,
+    //         /* 左上角坐标 */
+    //         100% 0%,
+    //         /* 右上角坐标 */
+    //         90% 100%,
+    //         /* 右下角坐标 */
+    //         10% 100%
+    //         /* 左下角坐标 */
+    //     );
+    // box-shadow: 0 0 10px 4px rgba(255, 50, 50, 0.8);
+
+    &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom, rgba(30, 60, 114, .8), rgba(50, 146, 255, .6));
+        clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+    }
+
+    .title {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        z-index: 2;
+        // color: rgb(205, 18, 18);
+        font-style: italic;
+        // text-shadow: 1px 1px 2px rgb(17, 17, 238);
+    }
+}

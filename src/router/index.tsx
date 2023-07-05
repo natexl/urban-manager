@@ -7,34 +7,38 @@ import Manager from '@/views/manager';
 import { Navigate } from 'react-router-dom';
 import NoticeInterface from '@/views/manager/notice';
 import ShapeEditorInterface from '@/views/manager/shapeEditor';
+import UsersInterface from '@/views/manager/users';
 
 const routeConfig = [
   {
     path: '/login',
-    element: <Login/>,
+    element: <Login />,
   },
   {
     path: '/home',
-    element: <Home/>,
+    element: <Home />,
   },
   {
     path: '/about',
-    element: <About/>,
+    element: <About />,
   },
   {
     path: '/manager',
-    element: <Manager/>,
+    element: <Manager />,
     children: [
-      {path: 'notice', element: <NoticeInterface/>},
-      {path: 'edit', element: <ShapeEditorInterface/>},
+      { path: 'notice', element: <NoticeInterface />},
+      { path: 'edit', element: <ShapeEditorInterface /> },
+      { path: 'users', element: <UsersInterface /> },
+      { path: '*', element: <NotFound /> },
     ]
   },
   {
     path: '/',
-    element: <Navigate to='/login'/>
+    element: <Navigate to='/login' />
   },
   {
-    element: <NotFound/>,
+    path: "*",
+    element: <NotFound />,
   },
 ];
 

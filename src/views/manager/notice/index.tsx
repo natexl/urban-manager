@@ -1,4 +1,5 @@
 import { Card, Form, Select, Input, Button } from "antd";
+import withKeepAlive from '@/components/public/keepAlive';
 const { TextArea } = Input;
 
 const NoticeInterface = () => {
@@ -34,4 +35,4 @@ const NoticeInterface = () => {
     )
 }
 
-export default NoticeInterface
+export default withKeepAlive(NoticeInterface)
