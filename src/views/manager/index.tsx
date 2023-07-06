@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
+import { useUpdate } from "ahooks";
+import { useLocation, useOutlet } from "react-router-dom";
 import {
-    DesktopOutlined,
     FileOutlined,
-    PieChartOutlined,
     TeamOutlined,
-    UserOutlined,
+    SoundOutlined,
+    EditOutlined,
+    FundOutlined,
+    CarryOutOutlined
 } from '@ant-design/icons';
 import { Outlet, useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import UserCard from '@/components/user/userCard';
 import "./manager.less"
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -30,16 +33,28 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('公告发布', '/manager/notice', <PieChartOutlined />),
-    getItem('用户管理', '/manager/users', <DesktopOutlined />),
+    getItem('公告发布', '/manager/notice', <SoundOutlined />),
+    getItem('用户管理', '/manager/users', <TeamOutlined />),
     getItem('权限管理', '/manager/permission', <FileOutlined />),
-    getItem('矢量编辑', '/manager/edit', <FileOutlined />),
-    getItem('事务处理', '/manager/transaction', <FileOutlined />),
-    getItem('系统概况', '/manager/system', <FileOutlined />)
+    getItem('矢量编辑', '/manager/edit', <EditOutlined />),
+    getItem('事务处理', '/manager/transaction', <CarryOutOutlined />),
+    getItem('系统概况', '/manager/system', <FundOutlined />)
 ];
 
 
 const Manager = () => {
+    const componentList = useRef(new Map());
+    const outLet = useOutlet();
+    const { pathname } = useLocation();
+    const forceUpdate = useUpdate();
+
+    useEffect(() => {
+        if (!componentList.current.has(pathname)) {
+            componentList.current.set(pathname, outLet);
+        }
+        forceUpdate();
+    }, [pathname]);
+
     const [collapsed, setCollapsed] = useState(false);
     const naviagate = useNavigate()
 
@@ -56,7 +71,7 @@ const Manager = () => {
             <Layout style={{ minHeight: '100vh' }} className='manager'>
                 <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                     <div className="demo-logo-vertical" />
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={menuClickHandler}/>
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={menuClickHandler} />
                 </Sider>
                 <Layout>
                     <Header style={{ padding: 0, background: colorBgContainer }} className='manager-header'>
@@ -73,7 +88,13 @@ const Manager = () => {
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb> */}
                         <div style={{ background: colorBgContainer }} className='router-outlet'>
-                            <Outlet/>
+                            {
+                                Array.from(componentList.current).map(([key, component]) =>
+                                    <div key={key} style={{ display: pathname === key ? 'block' : 'none' }} className='outlet-div'>
+                                        {component}
+                                    </div>
+                                )
+                            }
                         </div>
                     </Content>
                     {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer> */}

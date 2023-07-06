@@ -11,9 +11,10 @@ export async function apiLogin(username: string, password: string) {
 }
 
 export async function apiRegister(username: string, password: string) {
-    let res = await http.post("register", {
+    let res = await http.post("user/register", {
         username,
         password
     })
-    return res
+    // return res
+    return {status: 200, meta: {msg: "登录成功"}, success: true}
 }

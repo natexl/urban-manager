@@ -1,5 +1,5 @@
 import { Card, Form, Select, Input, Button } from "antd";
-import withKeepAlive from '@/components/public/keepAlive';
+
 const { TextArea } = Input;
 
 const NoticeInterface = () => {
@@ -17,7 +17,7 @@ const NoticeInterface = () => {
                     </Form.Item>
 
                     <Form.Item label="公告内容">
-                        <TextArea rows={4} placeholder="maxLength is 6" maxLength={6} />
+                        <TextArea rows={4} placeholder="请输入公告内容..." maxLength={60} />
                     </Form.Item>
 
                     <Form.Item label="面向群体">
@@ -35,4 +35,4 @@ const NoticeInterface = () => {
     )
 }
 
-export default withKeepAlive(NoticeInterface)
+export default NoticeInterface

@@ -1,38 +1,29 @@
-import { Card, Form, Row, Collapse } from "antd"
-import type { CollapseProps } from 'antd';
+import { Card, Form, Row, Select, Input, Col } from "antd"
 import React from 'react';
 import UserTable from "./userTable";
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+const { Option } = Select;
+const {Search} = Input
 
-const items: CollapseProps['items'] = [
-  {
-    key: '1',
-    label: 'This is panel header 1',
-    children: <p>{text}</p>,
-  },
-  {
-    key: '2',
-    label: 'This is panel header 2',
-    children: <p>{text}</p>,
-  },
-  {
-    key: '3',
-    label: 'This is panel header 3',
-    children: <p>{text}</p>,
-  },
-];
+const selectBefore = (
+    <Select defaultValue="all" style={{width: 100}}>
+        <Option value="all">all</Option>
+        <Option value="admin">admin</Option>
+    </Select>
+);
 
 const UsersInterface = () => {
+    const onSearch = (value: string) => console.log(value);
+
     return (
         <>
             <Card className="users-card">
+                <Row style={{marginBottom: 20}}>
+                    <Col span={12}>
+                        <Search addonBefore={selectBefore}  defaultValue="" allowClear onSearch={onSearch}/>
+                    </Col>
+                </Row>
                 <UserTable />
-                <Collapse accordion items={items} />
             </Card>
         </>
     )

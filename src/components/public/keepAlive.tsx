@@ -22,7 +22,7 @@ function withKeepAlive<P extends JSX.IntrinsicAttributes>(
       }
 
       return () => {
-        removeCache(location.pathname);
+        // removeCache(location.pathname);
       };
     }, [location.pathname]);
 
@@ -32,7 +32,7 @@ function withKeepAlive<P extends JSX.IntrinsicAttributes>(
           const isActive = item.pathname === location.pathname;
           return React.cloneElement(item.component, {
             key: item.pathname,
-            style: { display: isActive ? 'block' : 'none' },
+            // style: { display: isActive ? 'block' : 'none' },
           });
         })}
       </>

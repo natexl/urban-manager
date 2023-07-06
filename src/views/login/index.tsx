@@ -3,7 +3,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import "./login.less";
-import { apiLogin } from "@/apis/login/index";
+import { apiLogin, apiRegister } from "@/apis/login/index";
 
 const Login: React.FC = () => {
     const [isSignUp, setIsSignUp] = useState(false);
@@ -25,6 +25,16 @@ const Login: React.FC = () => {
             }
             message.error("login failed !")
             // if (loginRes.success) { }
+        } else {
+            const {username, password} = values
+            
+            const loginRes = await apiRegister(username, password);
+            if(loginRes.success) {
+                setIsSignUp(!isSignUp)
+                message.success("register success !")
+                return
+            }
+            message.error("register failed !")
         }
     };
 
